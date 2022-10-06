@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Counter</title>
+    <meta name="viewport" content="width=device-width">
+    <style>
+    .container-row {
+        --width: 50%;
+        width: 400px;
+        margin: 0 auto;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;        
+    }
+    .container-block {
+        width: 200px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .gauge {
+        width: 200px;
+        height: 200px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container-row">
+        <div class="container-block">
+            <div id="g1" class="gauge"></div>
+            <p id="gg1_text">NAS Labège</p>
+        </div>
+        <div class="container-block">
+            <div id="g2" class="gauge"></div>
+            <p id="g2_text">NAS Fullsave</p>
+        </div>    
+    </div>
+    <script src="https://cdn.jsdelivr.net/gh/ppuntis/PS1@main/raphael-2.1.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ppuntis/PS1@main/justgage.js"></script>
+    <script>
+    var g1;
+    var g2;
+    document.addEventListener("DOMContentLoaded", function(event) {
+        var $cust1='customSectors: [{color : "#01DF01",lo : 0,hi : 60},{color : "#A5DF00",lo : 61,hi : 74},{color : "#FFBF00",lo : 75,hi : 79},{color : "#FAAC58",lo : 80,hi : 84},{color : "#ff0000",lo : 85,hi : 100}]'
+        g1 = new JustGage({
+            id: "g1",
+            min: 0, max: 100, value: getRandomInt(0, 100),
+            donut: false,
+            gaugeWidthScale: 0.6,
+            customSectors: $cust1,
+            counter: true,
+            hideInnerShadow: true
+        });
+        g2 = new JustGage({
+            id: "g2",
+            min: 0, max: 100, value: getRandomInt(35, 90),
+            donut: false,
+            gaugeWidthScale: 0.6,
+            customSectors: $cust1,
+            counter: true,
+            hideInnerShadow: true
+        });     
+    });
+    </script>
+</body>
+
+</html>
